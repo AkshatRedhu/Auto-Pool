@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style/styles.css">
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="Scripts/jquery.touchSwipe.min.js"></script>
+
+<script src="Scripts/script.js"></script>
+    <script type="text/javascript">
+      $(window).load(function(){
+        $("[data-toggle]").click(function() {
+          var toggle_el = $(this).data("toggle");
+          $(toggle_el).toggleClass("open-sidebar");
+        });
+         $(".swipe-area").swipe({
+              swipeStatus:function(event, phase, direction, distance, duration, fingers)
+                  {
+                      if (phase=="move" && direction =="right") {
+                           $(".container").addClass("open-sidebar");
+                           return false;
+                      }
+                      if (phase=="move" && direction =="left") {
+                           $(".container").removeClass("open-sidebar");
+                           return false;
+                      }
+                  }
+          }); 
+      });
+      
+    </script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+  <div id="sidebar" style="text-align: center;">
+    <i class="material-icons" style="font-size: 80px !important;">rv_hookup</i>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Explore</a></li>
+      <li><a href="#">Users</a></li>
+      <li><a href="#">Sign Out</a></li>
+    </ul>
+  </div>
+<div class="main-content">
+<div id="head">
+  <h1 style="margin-left: 10%;">Auto Pool</h1>
+</div>
+<div class="swipe-area"></div>
+  <a href="#" data-toggle=".container" id="sidebar-toggle">
+    <i class="material-icons" style="font-size: 35px !important;">menu</i>
+  </a>
+<div class="content">
+
+<button onclick="retrieve();" style="margin-top: 80px;">Print test</button>
+  
+<table id="join" style="margin-top: 100px;">
+
+</table>
+
+<div class="button__holder">
+    <h2>Create Event </h2>
+    <button class="plus"></button>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html> 
